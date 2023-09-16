@@ -1,0 +1,7 @@
+com\udea\modelo\Conductores_.class
+com\udea\ejb\AbstractFacade.class
+com\udea\modelo\Vehiculos.class
+com\udea\modelo\Vehiculos_.class
+com\udea\ejb\ConductoresFacade.class
+com\udea\modelo\Conductores.class
+com\udea\ejb\ConductoresFacadeLocal.class

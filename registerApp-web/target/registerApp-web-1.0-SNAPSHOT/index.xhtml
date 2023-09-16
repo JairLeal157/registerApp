@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Formulario de Registro</title>
+        <link rel="stylesheet" href="css/styles.css"/>
+    </h:head>
+    <h:body>
+        <h:form prependId="false" class="text-algo">
+            <h1>Registrar un conductor</h1>
+            <h:panelGrid columns="3">
+
+                <p:outputLabel for="cedula" value="#{messages.id}" />
+                <p:inputText id="cedula" required="true" value="#{conductoresController.cedula}">
+                    <f:attribute name="requiredMessage" value="#{messages.id_required}" />
+                </p:inputText>
+                <p:message for="cedula" styleClass="errormsg" /> 
+
+                <p:outputLabel for="nombre" value="#{messages.nombre}" />
+                <p:inputText id="nombre" required="true" value="#{conductoresController.nombre}" >
+                    <f:attribute name="requiredMessage" value="#{messages.nombre_required}" />
+                </p:inputText>
+                <p:message for="nombre" styleClass="errormsg" />
+
+                <p:outputLabel for="apellidos" value="#{messages.apellido}" />
+                <p:inputText id="apellidos" required="true" value="#{conductoresController.apellidos}">
+                    <f:attribute name="requiredMessage" value="#{messages.apellido_required}" />
+                </p:inputText>
+                <p:message for="apellidos" styleClass="errormsg" />
+
+                <p:outputLabel for="correo" value="#{messages.email}" />
+                <p:inputText id="correo" required="true" value="#{conductoresController.correo}"   >
+                    <f:attribute name="requiredMessage" value="#{messages.email_required}" />
+                </p:inputText>
+                <p:message for="correo" styleClass="errormsg" />
+
+                <p:outputLabel for="telefono" value="#{messages.telefono}" />
+                <p:inputText id="telefono" required="true" value="#{conductoresController.telefono}" >
+                    <f:attribute name="requiredMessage" value="#{messages.telefono_required}" />
+                </p:inputText>
+                <p:message for="telefono" styleClass="errormsg" />
+            </h:panelGrid>
+
+            <h:commandButton type="submit" id="myButton" value="Guardar" actionListener="#{conductoresController.guardar()}" binding="#{conductoresController.myButton}" class="button-3"/>
+            <h:message for="myButton"/>
+        </h:form>
+    </h:body>
+</html>
+
