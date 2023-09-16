@@ -20,7 +20,7 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>search</from-outcome>
+            <from-outcome>guardar</from-outcome>
             <to-view-id>/searchDriver.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>

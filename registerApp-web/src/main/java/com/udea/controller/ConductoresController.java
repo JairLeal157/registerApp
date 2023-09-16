@@ -11,6 +11,8 @@ import javax.faces.context.FacesContext;
 import com.udea.ejb.ConductoresFacadeLocal;
 import com.udea.ejb.VehiculosFacadeLocal;
 import com.udea.modelo.Conductores;
+import com.udea.modelo.Vehiculos;
+import java.util.HashSet;
 
 public class ConductoresController  implements Serializable {
 
@@ -26,7 +28,49 @@ public class ConductoresController  implements Serializable {
     private String correo;
     private String telefono;;
     private List<Conductores> conductoresList;
+    private List<Vehiculos> vehiculosList;
     public boolean disable = true;
+    
+    private int conductor_id; 
+    private String modelo;
+    private String placa; 
+    private int año;
+
+    
+    public int getConductor_id() {
+        return conductor_id;
+    }
+
+    public void setConductor_id(int conductor_id) {
+        this.conductor_id = conductor_id;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public int getAño() {
+        return año;
+    }
+
+    public void setAño(int año) {
+        this.año = año;
+    }
+    
+    
+    
     private Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 
     public ConductoresFacadeLocal getConductoresFacade() {
@@ -84,6 +128,8 @@ public class ConductoresController  implements Serializable {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+    
+    
 
     public List<Conductores> getConductoresList() {
        if((this.conductoresList == null) || (this.conductoresList.isEmpty())){
@@ -91,6 +137,16 @@ public class ConductoresController  implements Serializable {
        }
        return this.conductoresList;
     }
+    
+    public List<Vehiculos> getVehiculosList() {
+       if((this.vehiculosList == null) || (this.vehiculosList.isEmpty())){
+           this.vehiculosList=  this.vehiculosFacade.findAll();
+       }
+       
+       return this.vehiculosList;
+    }
+    
+    
     private List<Conductores>  refresh() {
         return conductoresFacade.findAll();
     }
@@ -138,7 +194,7 @@ public class ConductoresController  implements Serializable {
         return existe;
     }
 
-    public String guardar(){
+    public String guardarConductor(){
         if(this.verificarCedula()){
             return "La cedula ya existe";
         }
@@ -158,5 +214,20 @@ public class ConductoresController  implements Serializable {
     };
     
     
+    public String guardarVehiculo(){
+        
+        
+        
+        
+        Vehiculos vehiculo = new Vehiculos();
+        vehiculo.setAño(this.año);
+        vehiculo.setConductorId(this.conductor_id);
+        vehiculo.setModelo(this.modelo);
+        vehiculo.setPlaca(this.placa);
+        
+        this.vehiculosFacade.create(vehiculo);
+         
+        return "El Vehiculo se ha guardado exitosamente";
+    };
   
 }
