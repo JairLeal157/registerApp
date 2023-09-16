@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <title value="#{messages.registrar_vehiculo_title}"/>
+        <link rel="stylesheet" href="css/styles.css"/>
+    </h:head>
+    <h:body>
+        <h:form class="navbar">
+            <h2 class="logoName">Uberosky</h2>
+            <div class="navbarLinks"> 
+                <h:commandButton class = "navItem" action="registrar-conductor?faces-redirect=true" value="Registrar conductor" />
+                <h:commandButton class = "navItem" action="registrar-vehiculo?faces-redirect=true" value="Registrar vehiculo" />
+                <h:commandButton class = "navItem" action="ver-conductores?faces-redirect=true" value="Ver conductores" />
+            </div>
+        </h:form>
+        <main>
+            <h1 value="#{messages.registrar_vehiculo}"/>
+            <h:form prependId="false" >
+                    <label class="fieldBaseStyles">
+                        
+                        <p:outputLabel for="conductor_id" value="#{messages.conductor_id}" />
+                        <p:inputText id="conductor_id" required="true" value="#{vehiculosController.conductor_id}">
+                            <f:attribute name="requiredMessage" value="#{messages.id_required}" />
+                        </p:inputText>
+                        <p:message for="conductor_id" styleClass="errormsg" /> 
+                    </label>
+                    <label class="fieldBaseStyles">
+                    
+                    <p:outputLabel for="modelo" value="#{messages.modelo}" />
+                    <p:inputText id="modelo" required="true" value="#{vehiculosController.modelo}" >
+                        <f:attribute name="requiredMessage" value="#{messages.modelo_required}" />
+                    </p:inputText>
+                    <p:message for="modelo" styleClass="errormsg" />
+                </label>
+                <label class="fieldBaseStyles">
+
+                    <p:outputLabel for="placa" value="#{messages.apellido}" />
+                    <p:inputText id="placa" required="true" value="#{vehiculosController.placa}">
+                        <f:attribute name="requiredMessage" value="#{messages.placa_required}" />
+                    </p:inputText>
+                    <p:message for="placa" styleClass="errormsg" />
+                </label>
+                <label class="fieldBaseStyles">
+
+                    <p:outputLabel for="year" value="#{messages.year}" />
+                    <p:inputText id="year" required="true" value="#{vehiculosController.year}"   >
+                        <f:attribute name="requiredMessage" value="#{messages.year_required}" />
+                    </p:inputText>
+                    <p:message for="year" styleClass="errormsg" />
+                </label>
+                
+                    <p:messages id="globalMessages" showDetail="true" closable="true" />
+                    <h:commandButton type="submit" id="myButton" value="Guardar" action="#{vehiculosController.guardar()}" class="button-3"/>
+                    <h:message for="myButton" />
+                
+                <h:message for="myButton"/>
+                
+                <h:message for="myButton" styleClass="errormsg" />
+                <h:messages globalOnly="true" styleClass="errormsg" />
+            </h:form>
+        </main>
+
+    </h:body>
+</html>

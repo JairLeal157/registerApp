@@ -9,7 +9,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
 import com.udea.ejb.ConductoresFacadeLocal;
-import com.udea.ejb.VehiculosFacadeLocal;
 import com.udea.modelo.Conductores;
 import javax.faces.application.FacesMessage;
 
@@ -17,8 +16,7 @@ public class ConductoresController  implements Serializable {
 
     @EJB
     private ConductoresFacadeLocal conductoresFacade;
- 
-    
+     
     private String warningMessage;
 
     private UIComponent myButton;

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <title value="#{messages.registrar_conductor_title}"/>
+        <link rel="stylesheet" href="css/styles.css"/>
+    </h:head>
+    <h:body>
+        <h:form class="navbar">
+            <h2 class="logoName">Uberosky</h2>
+            <div class="navbarLinks"> 
+                <h:commandButton class = "navItem" action="registrar-conductor?faces-redirect=true" value="Registrar conductor" />
+                <h:commandButton class = "navItem" action="registrar-vehiculo?faces-redirect=true" value="Registrar vehiculo" />
+                <h:commandButton class = "navItem" action="ver-conductores?faces-redirect=true" value="Ver conductores" />
+            </div>
+        </h:form>
+        <main>
+            <h1 value="#{messages.registrar_conductor}"></h1>
+            <h:form prependId="false" >
+                    <label class="fieldBaseStyles">
+                        <p:outputLabel for="cedula" value="#{messages.id}" />
+                        <p:inputText id="cedula" required="true" value="#{conductoresController.cedula}">
+                            <f:attribute name="requiredMessage" value="#{messages.id_required}" />
+                        </p:inputText>
+                        <p:message for="cedula" styleClass="errormsg" /> 
+                    </label>
+                    <label class="fieldBaseStyles">
+                    
+                    <p:outputLabel for="nombre" value="#{messages.nombre}" />
+                    <p:inputText id="nombre" required="true" value="#{conductoresController.nombre}" >
+                        <f:attribute name="requiredMessage" value="#{messages.nombre_required}" />
+                    </p:inputText>
+                    <p:message for="nombre" styleClass="errormsg" />
+                </label>
+                <label class="fieldBaseStyles">
+
+                    <p:outputLabel for="apellidos" value="#{messages.apellido}" />
+                    <p:inputText id="apellidos" required="true" value="#{conductoresController.apellidos}">
+                        <f:attribute name="requiredMessage" value="#{messages.apellido_required}" />
+                    </p:inputText>
+                    <p:message for="apellidos" styleClass="errormsg" />
+                </label>
+                <label class="fieldBaseStyles">
+
+                    <p:outputLabel for="correo" value="#{messages.email}" />
+                    <p:inputText id="correo" required="true" value="#{conductoresController.correo}"   >
+                        <f:attribute name="requiredMessage" value="#{messages.email_required}" />
+                    </p:inputText>
+                    <p:message for="correo" styleClass="errormsg" />
+                </label>
+                <label class="fieldBaseStyles">
+
+                    <p:outputLabel for="telefono" value="#{messages.telefono}" />
+                    <p:inputText id="telefono" required="true" value="#{conductoresController.telefono}" >
+                        <f:attribute name="requiredMessage" value="#{messages.telefono_required}" />
+                    </p:inputText>
+                    <p:message for="telefono" styleClass="errormsg" />
+                </label>
+               
+                    <p:messages id="globalMessages" showDetail="true" closable="true" />
+                    <h:commandButton type="submit" id="myButton" value="Guardar" action="#{conductoresController.guardar()}" class="button-3"/>
+                    <h:message for="myButton" />
+                
+                <h:message for="myButton"/>
+                
+                <h:message for="myButton" styleClass="errormsg" />
+                <h:messages globalOnly="true" styleClass="errormsg" />
+            </h:form>
+        </main>
+
+    </h:body>
+</html>
+
