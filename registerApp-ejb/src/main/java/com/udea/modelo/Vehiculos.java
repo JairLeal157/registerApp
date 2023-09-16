@@ -11,8 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -32,7 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Vehiculos.findById", query = "SELECT v FROM Vehiculos v WHERE v.id = :id"),
     @NamedQuery(name = "Vehiculos.findByModelo", query = "SELECT v FROM Vehiculos v WHERE v.modelo = :modelo"),
     @NamedQuery(name = "Vehiculos.findByPlaca", query = "SELECT v FROM Vehiculos v WHERE v.placa = :placa"),
-    @NamedQuery(name = "Vehiculos.findByA\u00f1o", query = "SELECT v FROM Vehiculos v WHERE v.a\u00f1o = :a\u00f1o")})
+    @NamedQuery(name = "Vehiculos.findByA\u00f1o", query = "SELECT v FROM Vehiculos v WHERE v.a\u00f1o = :a\u00f1o"),
+    @NamedQuery(name = "Vehiculos.findByConductorId", query = "SELECT v FROM Vehiculos v WHERE v.conductorId = :conductorId")})
 public class Vehiculos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,9 +54,8 @@ public class Vehiculos implements Serializable {
     @NotNull
     @Column(name = "a\u00f1o")
     private int año;
-    @JoinColumn(name = "conductor_id", referencedColumnName = "id")
-    @ManyToOne
-    private Conductores conductorId;
+    @Column(name = "conductor_id")
+    private Integer conductorId;
 
     public Vehiculos() {
     }
@@ -105,11 +103,11 @@ public class Vehiculos implements Serializable {
         this.año = año;
     }
 
-    public Conductores getConductorId() {
+    public Integer getConductorId() {
         return conductorId;
     }
 
-    public void setConductorId(Conductores conductorId) {
+    public void setConductorId(Integer conductorId) {
         this.conductorId = conductorId;
     }
 
@@ -135,7 +133,7 @@ public class Vehiculos implements Serializable {
 
     @Override
     public String toString() {
-        return "com.udea.modelo.Vehiculos[ id=" + id + " ]";
+        return "com.udea.ejb.Vehiculos[ id=" + id + " ]";
     }
     
 }

@@ -18,17 +18,11 @@
         </resource-bundle>
     </application>
     <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>search</from-outcome>
-            <to-view-id>/searchDriver.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/searchDriver.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>back</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+    <from-view-id>/index.xhtml</from-view-id>
+    <navigation-case>
+        <from-outcome>success</from-outcome> <!-- Esto debe coincidir con el valor de retorno de tu método guardar() -->
+        <to-view-id>/searchDriver.xhtml</to-view-id>
+        <redirect />
+    </navigation-case>
+</navigation-rule>
 </faces-config>
