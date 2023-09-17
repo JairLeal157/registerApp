@@ -5,24 +5,16 @@
 package com.udea.modelo;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -37,13 +29,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Conductores.findByNombre", query = "SELECT c FROM Conductores c WHERE c.nombre = :nombre"),
     @NamedQuery(name = "Conductores.findByApellido", query = "SELECT c FROM Conductores c WHERE c.apellido = :apellido"),
     @NamedQuery(name = "Conductores.findByTelefono", query = "SELECT c FROM Conductores c WHERE c.telefono = :telefono"),
-    @NamedQuery(name = "Conductores.findByEmail", query = "SELECT c FROM Conductores c WHERE c.email = :email"),
-    @NamedQuery(name = "Conductores.findByFechaRegistro", query = "SELECT c FROM Conductores c WHERE c.fechaRegistro = :fechaRegistro")})
+    @NamedQuery(name = "Conductores.findByEmail", query = "SELECT c FROM Conductores c WHERE c.email = :email")})
 public class Conductores implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @NotNull
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
@@ -67,11 +59,6 @@ public class Conductores implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "email")
     private String email;
-    @Column(name = "fecha_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaRegistro;
-    @OneToMany(mappedBy = "conductorId")
-    private Collection<Vehiculos> vehiculosCollection;
 
     public Conductores() {
     }
@@ -126,23 +113,6 @@ public class Conductores implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Date getFechaRegistro() {
-        return fechaRegistro;
-    }
-
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-
-    @XmlTransient
-    public Collection<Vehiculos> getVehiculosCollection() {
-        return vehiculosCollection;
-    }
-
-    public void setVehiculosCollection(Collection<Vehiculos> vehiculosCollection) {
-        this.vehiculosCollection = vehiculosCollection;
     }
 
     @Override

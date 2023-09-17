@@ -9,16 +9,16 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
 import com.udea.ejb.ConductoresFacadeLocal;
-import com.udea.ejb.VehiculosFacadeLocal;
 import com.udea.modelo.Conductores;
+import javax.faces.application.FacesMessage;
 
 public class ConductoresController  implements Serializable {
 
     @EJB
     private ConductoresFacadeLocal conductoresFacade;
-    @EJB
-    private VehiculosFacadeLocal vehiculosFacade;
-    
+     
+    private String warningMessage;
+
     private UIComponent myButton;
     private int cedula;
     private String nombre;
@@ -27,8 +27,7 @@ public class ConductoresController  implements Serializable {
     private String telefono;;
     private List<Conductores> conductoresList;
     public boolean disable = true;
-    private Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
-
+    
     public ConductoresFacadeLocal getConductoresFacade() {
         return conductoresFacade;
     }
@@ -44,6 +43,16 @@ public class ConductoresController  implements Serializable {
     public void setMyButton(UIComponent myButton) {
         this.myButton = myButton;
     }
+
+    public String getWarningMessage() {
+        return warningMessage;
+    }
+
+    public void setWarningMessage(String warningMessage) {
+        this.warningMessage = warningMessage;
+    }
+    
+    
 
     public int getCedula() {
         return cedula;
@@ -95,8 +104,6 @@ public class ConductoresController  implements Serializable {
         return conductoresFacade.findAll();
     }
     
-    
-  
 
     public boolean isDisable() {
         return disable;
@@ -106,21 +113,21 @@ public class ConductoresController  implements Serializable {
         this.disable = disable;
     }
 
-    public Locale getLocale() {
-        return locale;
-    }
+   private Locale locale= FacesContext.getCurrentInstance().getViewRoot().getLocale();
+    public Locale getLocale(){
+    return locale;   
+}
 
-    public void setLocale(Locale locale) {
-        this.locale = locale;
-        FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
+    public String getLanguage(){
+       return locale.getLanguage();
     }
     
-    public String getLanguage(){
-        return this.getLocale().getLanguage();
-    }
-    public void  changeLanguage(String language){
-        this.setLocale(new Locale(language) );
-    }
+    
+    public void changeLanguage(String language){
+       locale=new Locale(language);
+       
+       FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale(language));
+    }    
     
     
     public ConductoresController(){
@@ -140,7 +147,9 @@ public class ConductoresController  implements Serializable {
 
     public String guardar(){
         if(this.verificarCedula()){
-            return "La cedula ya existe";
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage("globalMessages", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "La cédula ya existe"));
+            return null;
         }
         Conductores conductor = new Conductores();
         conductor.setId(this.cedula);
@@ -152,10 +161,19 @@ public class ConductoresController  implements Serializable {
         this.conductoresList = this.refresh();
         Conductores result = this.conductoresFacade.find(conductor.getId());
         if(result == null){
-            return "El conductor no se ha guardado";
-        };
-        return "El conductor se ha guardado exitosamente";
+            FacesContext context = FacesContext.getCurrentInstance();
+             context.addMessage("globalMessages", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "No se registro el usuario"));
+            return null;
+        }
+        return "success";
     };
+    
+    
+    
+    
+    
+    
+    
     
     
   
