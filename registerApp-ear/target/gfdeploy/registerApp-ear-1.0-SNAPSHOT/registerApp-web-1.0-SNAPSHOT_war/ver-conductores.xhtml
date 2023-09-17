@@ -18,6 +18,9 @@
                 <h:commandButton class = "navItem" action="registrar-vehiculo?faces-redirect=true" value="Registrar vehiculo" />
                 <h:commandButton class = "navItem" action="ver-conductores?faces-redirect=true" value="Ver conductores" />
                 <h:commandButton class = "navItem" action="ver-vehiculos?faces-redirect=true" value="Ver vehiculos" />
+             <h:commandButton class="navImg" action="#{conductoresController.changeLanguage('')}" value="English" image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png" />
+                <h:commandButton class="navImg" action="#{conductoresController.changeLanguage('')}" value="Spanish" image="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Bandera_Nacional_de_Espa%C3%B1a.png/800px-Bandera_Nacional_de_Espa%C3%B1a.png" />
+            
             </div>
         </h:form>
         <f:view>
@@ -28,7 +31,7 @@
                 <p:dataTable value="#{conductoresController.conductoresList}" var="item">
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Id"/>
+                            <h:outputText value="#{messages.id}"/>
                         </f:facet>
                         <h:outputText value="#{item.id}"/>
                     </p:column>
@@ -37,7 +40,7 @@
                     
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Nombre"/>
+                            <h:outputText value="#{messages.nombre}" />
                         </f:facet>
                         <h:outputText value="#{item.nombre}"/>
                     </p:column>
@@ -46,26 +49,26 @@
                     
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Apellido"/>
+                            <h:outputText value="#{messages.apellido}"/>
                         </f:facet>
                         <h:outputText value="#{item.apellido}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Telefono"/>
+                            <h:outputText value="#{messages.telefono}"/>
                         </f:facet>
                         <h:outputText value="#{item.telefono}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Email"/>
+                            <h:outputText value="#{messages.email}"/>
                         </f:facet>
                         <h:outputText value="#{item.email}"/>
                     </p:column>
                    
                     <p:column headerText="Qr Code">
                     
-                    <p:barcode value="#{item.id} #{item.nombre} #{item.apellido} " type="qr" format="png"/>
+                    <p:barcode value="#{item.id} #{item.nombre} #{item.apellido} " width="150px" height="150px" type="qr" format="png"/>
                     </p:column>
                     
                     

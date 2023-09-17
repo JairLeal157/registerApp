@@ -112,3 +112,7 @@ main {
   align-self: flex-end;
   margin-top: 1.5rem;
 }
+.navImg{
+    width: 50px;
+    height: 50px;
+}

@@ -17,9 +17,18 @@
                 <h:commandButton class = "navItem" action="registrar-vehiculo?faces-redirect=true" value="Registrar vehiculo" />
                 <h:commandButton class = "navItem" action="ver-conductores?faces-redirect=true" value="Ver conductores" />
                 <h:commandButton class = "navItem" action="ver-vehiculos?faces-redirect=true" value="Ver vehiculos" />
+                <h:commandButton class="navImg" action="#{conductoresController.changeLanguage('')}" value="English" image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png" />
+                <h:commandButton class="navImg" action="#{conductoresController.changeLanguage('')}" value="Spanish" image="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Bandera_Nacional_de_Espa%C3%B1a.png/800px-Bandera_Nacional_de_Espa%C3%B1a.png" />
+            
             </div>
         </h:form>
+        
+        
+        
+        
         <main>
+            
+            
             <h1 value="#{messages.registrar_conductor}"></h1>
             <h:form prependId="false" >
                     <label class="fieldBaseStyles">
@@ -61,6 +70,13 @@
                     </p:inputText>
                     <p:message for="telefono" styleClass="errormsg" />
                 </label>
+                
+                
+                  <h2>Captcha</h2> 
+                    <p:messages id="messages" />
+                    <p:captcha id="captcha"></p:captcha>
+                    <br/>
+
                
                     <p:messages id="globalMessages" showDetail="true" closable="true" />
                     <h:commandButton type="submit" id="myButton" value="Guardar" action="#{conductoresController.guardar()}" class="button-3"/>
@@ -68,18 +84,14 @@
                 
                     
                     
-                     
-
+                   
                     
                     
                 <h:message for="myButton"/>
                 
                 <h:message for="myButton" styleClass="errormsg" />
                 <h:messages globalOnly="true" styleClass="errormsg" />
-                <h2>Captcha</h2> 
-                    <p:messages id="messages" />
-                    <p:captcha id="captcha"></p:captcha>
-                    <br/>
+                
             </h:form>
         </main>
 

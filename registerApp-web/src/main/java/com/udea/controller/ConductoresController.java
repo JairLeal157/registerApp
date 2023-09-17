@@ -27,8 +27,7 @@ public class ConductoresController  implements Serializable {
     private String telefono;;
     private List<Conductores> conductoresList;
     public boolean disable = true;
-    private Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
-
+    
     public ConductoresFacadeLocal getConductoresFacade() {
         return conductoresFacade;
     }
@@ -114,21 +113,21 @@ public class ConductoresController  implements Serializable {
         this.disable = disable;
     }
 
-    public Locale getLocale() {
-        return locale;
-    }
+   private Locale locale= FacesContext.getCurrentInstance().getViewRoot().getLocale();
+    public Locale getLocale(){
+    return locale;   
+}
 
-    public void setLocale(Locale locale) {
-        this.locale = locale;
-        FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
+    public String getLanguage(){
+       return locale.getLanguage();
     }
     
-    public String getLanguage(){
-        return this.getLocale().getLanguage();
-    }
-    public void  changeLanguage(String language){
-        this.setLocale(new Locale(language) );
-    }
+    
+    public void changeLanguage(String language){
+       locale=new Locale(language);
+       
+       FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale(language));
+    }    
     
     
     public ConductoresController(){

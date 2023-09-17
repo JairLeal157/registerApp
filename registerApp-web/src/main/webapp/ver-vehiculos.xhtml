@@ -18,41 +18,45 @@
                 <h:commandButton class = "navItem" action="registrar-vehiculo?faces-redirect=true" value="Registrar vehiculo" />
                 <h:commandButton class = "navItem" action="ver-conductores?faces-redirect=true" value="Ver conductores" />
                 <h:commandButton class = "navItem" action="ver-vehiculos?faces-redirect=true" value="Ver vehiculos" />
+             <h:commandButton class="navImg" action="#{vehiculosController.changeLanguage('')}" value="English" image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png" />
+                <h:commandButton class="navImg" action="#{vehiculosController.changeLanguage('')}" value="Spanish" image="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Bandera_Nacional_de_Espa%C3%B1a.png/800px-Bandera_Nacional_de_Espa%C3%B1a.png" />
+            
+            
             </div>
         </h:form>
         <f:view>
 
 
             <h:form>
-                <h1><h:outputText value="List"/></h1>
+                <h1><h:outputText value="Lista de vehiculos registrados"/></h1>
                 <p:dataTable value="#{vehiculosController.vehiculosList}" var="item">
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Id"/>
+                            <h:outputText value="#{messages.id}" />
                         </f:facet>
                         <h:outputText value="#{item.id}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Modelo"/>
+                            <h:outputText value="#{messages.modelo}"/>
                         </f:facet>
                         <h:outputText value="#{item.modelo}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Placa"/>
+                            <h:outputText value="#{messages.placa}"/>
                         </f:facet>
                         <h:outputText value="#{item.placa}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Año"/>
+                            <h:outputText value="#{messages.year}"/>
                         </f:facet>
                         <h:outputText value="#{item.año}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="ConductorId"/>
+                            <h:outputText value="#{messages.conductor_id}"/>
                         </f:facet>
                         <h:outputText value="#{item.conductorId}"/>
                     </p:column>
@@ -60,7 +64,7 @@
                     
                     <p:column headerText="Qr Code">
                     
-                    <p:barcode value="#{item.conductorId} #{item.modelo} #{item.placa} " type="qr" format="png"/>
+                    <p:barcode value="#{item.conductorId} #{item.modelo} #{item.placa} " width="150px" height="150px" type="qr" format="png"/>
                     </p:column>
                     
                     
