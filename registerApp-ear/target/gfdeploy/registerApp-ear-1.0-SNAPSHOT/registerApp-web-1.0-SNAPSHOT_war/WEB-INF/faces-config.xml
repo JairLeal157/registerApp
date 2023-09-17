@@ -69,7 +69,10 @@
         <redirect />
     </navigation-case>
   </navigation-rule>
-    
+  
+  
+  
+      
   
     <navigation-rule>
 	<from-view-id>index.xhtml</from-view-id>
@@ -95,5 +98,15 @@
 		<redirect />
 	</navigation-case>
 </navigation-rule>
+
+<navigation-rule>
+	<from-view-id>index.xhtml</from-view-id>
+	<navigation-case>
+		<from-outcome>ver-vehiculos</from-outcome>
+		<to-view-id>ver-vehiculos.xhtml</to-view-id>
+		<redirect />
+	</navigation-case>
+</navigation-rule>
+
 </navigation-rule>
 </faces-config>

@@ -16,6 +16,7 @@ import com.udea.ejb.ConductoresFacadeLocal;
 import com.udea.ejb.VehiculosFacadeLocal;
 import com.udea.modelo.Conductores;
 import com.udea.modelo.Vehiculos;
+import java.util.ArrayList;
 import javax.faces.component.UIComponent;
 
 /**
@@ -38,6 +39,34 @@ public class VehiculosController implements Serializable {
     private int year;
     private int conductor_id;
     private List<Vehiculos> vehiculosList;
+    private static int conductorIdAux;
+    
+    
+    public int getConductorIdAux() {
+        return conductorIdAux;
+    }
+    
+    public List<Vehiculos> vehiculosByConductor(int conductorId){
+      List<Vehiculos> result=new ArrayList<Vehiculos>();
+      
+      for(Vehiculos vehiculo:this.getVehiculosList()){
+        
+          if(vehiculo.getConductorId()== conductorId){
+              
+              result.add(vehiculo);
+              
+              
+          }
+       } 
+      return result;
+    };
+    
+    public String setConductorIdAux(int conductorIdAux) {
+        this.conductorIdAux = conductorIdAux;
+        
+        return "success";
+        
+    }
     public boolean disable = true;
     private Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 

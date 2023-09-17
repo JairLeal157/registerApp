@@ -5,15 +5,26 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+         <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <title value="#{messages.registrar_vehiculo_title}"/>
+        <link rel="stylesheet" href="css/styles.css"/>
     </h:head>
     <h:body>
-       
+       <h:form class="navbar">
+            <h2 class="logoName">Uberosky</h2>
+            <div class="navbarLinks"> 
+                <h:commandButton class = "navItem" action="registrar-conductor?faces-redirect=true" value="Registrar conductor" />
+                <h:commandButton class = "navItem" action="registrar-vehiculo?faces-redirect=true" value="Registrar vehiculo" />
+                <h:commandButton class = "navItem" action="ver-conductores?faces-redirect=true" value="Ver conductores" />
+                <h:commandButton class = "navItem" action="ver-vehiculos?faces-redirect=true" value="Ver vehiculos" />
+            </div>
+        </h:form>
         <f:view>
 
 
             <h:form>
-                <h1><h:outputText value="List"/></h1>
+                <h1><h:outputText value="Lista de conductores registrados"/></h1>
                 <p:dataTable value="#{conductoresController.conductoresList}" var="item">
                     <p:column>
                         <f:facet name="header">
@@ -30,6 +41,9 @@
                         </f:facet>
                         <h:outputText value="#{item.nombre}"/>
                     </p:column>
+                    
+                    
+                    
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Apellido"/>
@@ -53,6 +67,9 @@
                     
                     <p:barcode value="#{item.id} #{item.nombre} #{item.apellido} " type="qr" format="png"/>
                     </p:column>
+                    
+                    
+                                  
                     
                     
                 </p:dataTable>
