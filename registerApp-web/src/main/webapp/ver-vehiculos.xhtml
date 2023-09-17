@@ -14,10 +14,10 @@
         <h:form class="navbar">
             <h2 class="logoName">Uberosky</h2>
             <div class="navbarLinks"> 
-                <h:commandButton class = "navItem" action="registrar-conductor?faces-redirect=true" value="Registrar conductor" />
-                <h:commandButton class = "navItem" action="registrar-vehiculo?faces-redirect=true" value="Registrar vehiculo" />
-                <h:commandButton class = "navItem" action="ver-conductores?faces-redirect=true" value="Ver conductores" />
-                <h:commandButton class = "navItem" action="ver-vehiculos?faces-redirect=true" value="Ver vehiculos" />
+                <h:commandButton class = "navItem" action="registrar-conductor?faces-redirect=true" value="#{messages.registrar_conductor}" />
+                <h:commandButton class = "navItem" action="registrar-vehiculo?faces-redirect=true" value="#{messages.registrar_vehiculo}" />
+                <h:commandButton class = "navItem" action="ver-conductores?faces-redirect=true" value="#{messages.ver_conductores}" />
+                <h:commandButton class = "navItem" action="ver-vehiculos?faces-redirect=true" value="#{messages.ver_vehiculos}"  />
              <h:commandButton class="navImg" action="#{vehiculosController.changeLanguage('')}" value="English" image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png" />
                 <h:commandButton class="navImg" action="#{vehiculosController.changeLanguage('')}" value="Spanish" image="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Bandera_Nacional_de_Espa%C3%B1a.png/800px-Bandera_Nacional_de_Espa%C3%B1a.png" />
             
@@ -28,7 +28,7 @@
 
 
             <h:form>
-                <h1><h:outputText value="Lista de vehiculos registrados"/></h1>
+                <h1><h:outputText value="#{messages.ver_vehiculos_title}"/></h1>
                 <p:dataTable value="#{vehiculosController.vehiculosList}" var="item">
                     <p:column>
                         <f:facet name="header">
