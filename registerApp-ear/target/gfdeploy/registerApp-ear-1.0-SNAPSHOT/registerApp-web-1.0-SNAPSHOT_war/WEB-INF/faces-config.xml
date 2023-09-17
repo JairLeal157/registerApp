@@ -16,8 +16,19 @@
         </managed-bean-name>
         <managed-bean-class>com.udea.controller.VehiculosController</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    
+        
+        
+        </managed-bean>
+        
+        <managed-bean>
+        <managed-bean-name>
+           captcha
+        </managed-bean-name>
+        <managed-bean-class>com.udea.controller.Captcha</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        
+        
+        </managed-bean>
     
     <application>
         <resource-bundle>
@@ -59,7 +70,6 @@
     </navigation-case>
   </navigation-rule>
     
-
   
     <navigation-rule>
 	<from-view-id>index.xhtml</from-view-id>
